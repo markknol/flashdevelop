@@ -12,34 +12,34 @@
 !define VERSION "5.1.0"
 
 ; Installer details
-VIAddVersionKey "CompanyName" "FlashDevelop.org"
-VIAddVersionKey "ProductName" "FlashDevelop Installer"
-VIAddVersionKey "LegalCopyright" "FlashDevelop.org 2005-2015"
-VIAddVersionKey "FileDescription" "FlashDevelop Installer"
+VIAddVersionKey "CompanyName" "HaxeDevelop.org"
+VIAddVersionKey "ProductName" "HaxeDevelop Installer"
+VIAddVersionKey "LegalCopyright" "HaxeDevelop.org 2005-2015"
+VIAddVersionKey "FileDescription" "HaxeDevelop Installer"
 VIAddVersionKey "ProductVersion" "${VERSION}.0"
 VIAddVersionKey "FileVersion" "${VERSION}.0"
 VIProductVersion "${VERSION}.0"
 
 ; The name of the installer
-Name "FlashDevelop"
+Name "HaxeDevelop"
 
 ; The captions of the installer
-Caption "FlashDevelop ${VERSION} Setup"
-UninstallCaption "FlashDevelop ${VERSION} Uninstall"
+Caption "HaxeDevelop ${VERSION} Setup"
+UninstallCaption "HaxeDevelop ${VERSION} Uninstall"
 
 ; The file to write
-OutFile "Binary\FlashDevelop.exe"
+OutFile "Binary\HaxeDevelop.exe"
 
 ; Default installation folder
-InstallDir "$PROGRAMFILES\FlashDevelop\"
+InstallDir "$PROGRAMFILES\HaxeDevelop\"
 
 ; Define executable files
-!define EXECUTABLE "$INSTDIR\FlashDevelop.exe"
+!define EXECUTABLE "$INSTDIR\HaxeDevelop.exe"
 !define WIN32RES "$INSTDIR\Tools\winres\winres.exe"
 !define ASDOCGEN "$INSTDIR\Tools\asdocgen\ASDocGen.exe"
 
 ; Get installation folder from registry if available
-InstallDirRegKey HKLM "Software\FlashDevelop" ""
+InstallDirRegKey HKLM "Software\HaxeDevelop" ""
 
 ; Vista redirects $SMPROGRAMS to all users without this
 RequestExecutionLevel admin
@@ -63,7 +63,7 @@ XPStyle on
 !define MUI_HEADERIMAGE_BITMAP "Graphics\Banner.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "Graphics\Wizard.bmp"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "Graphics\Wizard.bmp"
-!define MUI_FINISHPAGE_SHOWREADME "http://www.flashdevelop.org/wikidocs/index.php?title=Getting_Started"
+!define MUI_FINISHPAGE_SHOWREADME "http://www.haxedevelop.org/"
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "See online guide to get started"
 
 ;--------------------------------
@@ -147,7 +147,7 @@ Function GetFDVersion
 	
 	Push $0
 	ClearErrors
-	ReadRegStr $0 HKLM Software\FlashDevelop "CurrentVersion"
+	ReadRegStr $0 HKLM Software\HaxeDevelop "CurrentVersion"
 	IfErrors 0 +2
 	StrCpy $0 "not_found"
 	Exch $0
@@ -158,7 +158,7 @@ Function GetFDInstDir
 	
 	Push $0
 	ClearErrors
-	ReadRegStr $0 HKLM Software\FlashDevelop ""
+	ReadRegStr $0 HKLM Software\HaxeDevelop ""
 	IfErrors 0 +2
 	StrCpy $0 "not_found"
 	Exch $0
@@ -169,12 +169,12 @@ Function NotifyInstall
 	
 	SetOverwrite on
 	IfFileExists "$INSTDIR\.local" Local 0
-	IfFileExists "$LOCALAPPDATA\FlashDevelop\*.*" User Done
+	IfFileExists "$LOCALAPPDATA\HaxeDevelop\*.*" User Done
 	Local:
 	SetOutPath "$INSTDIR"
 	File "/oname=.update" "..\Bin\Debug\.local"
 	User:
-	SetOutPath "$LOCALAPPDATA\FlashDevelop"
+	SetOutPath "$LOCALAPPDATA\HaxeDevelop"
 	File "/oname=.update" "..\Bin\Debug\.local"
 	Done:
 	
@@ -201,7 +201,7 @@ FunctionEnd
 
 ; Install Sections
 
-Section "FlashDevelop" Main
+Section "HaxeDevelop" Main
 	
 	SectionIn 1 2 RO
 	SetOverwrite on
@@ -262,7 +262,7 @@ Section "Desktop Shortcut" DesktopShortcut
 	SetOverwrite on
 	SetShellVarContext all
 	
-	CreateShortCut "$DESKTOP\FlashDevelop.lnk" "${EXECUTABLE}" "" "${EXECUTABLE}" 0
+	CreateShortCut "$DESKTOP\HaxeDevelop.lnk" "${EXECUTABLE}" "" "${EXECUTABLE}" 0
 	
 SectionEnd
 
@@ -271,7 +271,7 @@ Section "Quick Launch Item" QuickShortcut
 	SetOverwrite on
 	SetShellVarContext all
 	
-	CreateShortCut "$QUICKLAUNCH\FlashDevelop.lnk" "${EXECUTABLE}" "" "${EXECUTABLE}" 0
+	CreateShortCut "$QUICKLAUNCH\HaxeDevelop.lnk" "${EXECUTABLE}" "" "${EXECUTABLE}" 0
 	
 SectionEnd
 
@@ -287,7 +287,7 @@ Section "English" EnglishLocale
 	
 	SetOverwrite on
 	IfFileExists "$INSTDIR\.local" Local 0
-	IfFileExists "$LOCALAPPDATA\FlashDevelop\*.*" User Done
+	IfFileExists "$LOCALAPPDATA\HaxeDevelop\*.*" User Done
 	Local:
 	ClearErrors
 	FileOpen $1 "$INSTDIR\.locale" w
@@ -296,7 +296,7 @@ Section "English" EnglishLocale
 	FileClose $1
 	User:
 	ClearErrors
-	FileOpen $1 "$LOCALAPPDATA\FlashDevelop\.locale" w
+	FileOpen $1 "$LOCALAPPDATA\HaxeDevelop\.locale" w
 	IfErrors Done
 	FileWrite $1 "en_US"
 	FileClose $1
@@ -308,7 +308,7 @@ Section "Chinese" ChineseLocale
 	
 	SetOverwrite on
 	IfFileExists "$INSTDIR\.local" Local 0
-	IfFileExists "$LOCALAPPDATA\FlashDevelop\*.*" User Done
+	IfFileExists "$LOCALAPPDATA\HaxeDevelop\*.*" User Done
 	Local:
 	ClearErrors
 	FileOpen $1 "$INSTDIR\.locale" w
@@ -317,7 +317,7 @@ Section "Chinese" ChineseLocale
 	FileClose $1
 	User:
 	ClearErrors
-	FileOpen $1 "$LOCALAPPDATA\FlashDevelop\.locale" w
+	FileOpen $1 "$LOCALAPPDATA\HaxeDevelop\.locale" w
 	IfErrors Done
 	FileWrite $1 "zh_CN"
 	FileClose $1
@@ -329,7 +329,7 @@ Section "Japanese" JapaneseLocale
 	
 	SetOverwrite on
 	IfFileExists "$INSTDIR\.local" Local 0
-	IfFileExists "$LOCALAPPDATA\FlashDevelop\*.*" User Done
+	IfFileExists "$LOCALAPPDATA\HaxeDevelop\*.*" User Done
 	Local:
 	ClearErrors
 	FileOpen $1 "$INSTDIR\.locale" w
@@ -338,7 +338,7 @@ Section "Japanese" JapaneseLocale
 	FileClose $1
 	User:
 	ClearErrors
-	FileOpen $1 "$LOCALAPPDATA\FlashDevelop\.locale" w
+	FileOpen $1 "$LOCALAPPDATA\HaxeDevelop\.locale" w
 	IfErrors Done
 	FileWrite $1 "ja_JP"
 	FileClose $1
@@ -350,7 +350,7 @@ Section "German" GermanLocale
 	
 	SetOverwrite on
 	IfFileExists "$INSTDIR\.local" Local 0
-	IfFileExists "$LOCALAPPDATA\FlashDevelop\*.*" User Done
+	IfFileExists "$LOCALAPPDATA\HaxeDevelop\*.*" User Done
 	Local:
 	ClearErrors
 	FileOpen $1 "$INSTDIR\.locale" w
@@ -359,7 +359,7 @@ Section "German" GermanLocale
 	FileClose $1
 	User:
 	ClearErrors
-	FileOpen $1 "$LOCALAPPDATA\FlashDevelop\.locale" w
+	FileOpen $1 "$LOCALAPPDATA\HaxeDevelop\.locale" w
 	IfErrors Done
 	FileWrite $1 "de_DE"
 	FileClose $1
@@ -371,7 +371,7 @@ Section "Basque" BasqueLocale
 	
 	SetOverwrite on
 	IfFileExists "$INSTDIR\.local" Local 0
-	IfFileExists "$LOCALAPPDATA\FlashDevelop\*.*" User Done
+	IfFileExists "$LOCALAPPDATA\HaxeDevelop\*.*" User Done
 	Local:
 	ClearErrors
 	FileOpen $1 "$INSTDIR\.locale" w
@@ -380,7 +380,7 @@ Section "Basque" BasqueLocale
 	FileClose $1
 	User:
 	ClearErrors
-	FileOpen $1 "$LOCALAPPDATA\FlashDevelop\.locale" w
+	FileOpen $1 "$LOCALAPPDATA\HaxeDevelop\.locale" w
 	IfErrors Done
 	FileWrite $1 "eu_ES"
 	FileClose $1
@@ -398,11 +398,11 @@ Section "Start Menu Group" StartMenuGroup
 	SetOverwrite on
 	SetShellVarContext all
 	
-	CreateDirectory "$SMPROGRAMS\FlashDevelop"
-	CreateShortCut "$SMPROGRAMS\FlashDevelop\FlashDevelop.lnk" "${EXECUTABLE}" "" "${EXECUTABLE}" 0
-	WriteINIStr "$SMPROGRAMS\FlashDevelop\Documentation.url" "InternetShortcut" "URL" "http://www.flashdevelop.org/wikidocs/"
-	WriteINIStr "$SMPROGRAMS\FlashDevelop\Community.url" "InternetShortcut" "URL" "http://www.flashdevelop.org/community/"
-	CreateShortCut "$SMPROGRAMS\FlashDevelop\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
+	CreateDirectory "$SMPROGRAMS\HaxeDevelop"
+	CreateShortCut "$SMPROGRAMS\HaxeDevelop\HaxeDevelop.lnk" "${EXECUTABLE}" "" "${EXECUTABLE}" 0
+	WriteINIStr "$SMPROGRAMS\HaxeDevelop\Documentation.url" "InternetShortcut" "URL" "http://www.flashdevelop.org/wikidocs/"
+	WriteINIStr "$SMPROGRAMS\HaxeDevelop\Community.url" "InternetShortcut" "URL" "http://www.flashdevelop.org/community/"
+	CreateShortCut "$SMPROGRAMS\HaxeDevelop\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
 	
 SectionEnd
 
@@ -415,57 +415,57 @@ Section "Registry Modifications" RegistryMods
 	Delete "$INSTDIR\.multi"
 	Delete "$INSTDIR\.local"
 	
-	DeleteRegKey /ifempty HKCR "Applications\FlashDevelop.exe"	
-	DeleteRegKey /ifempty HKLM "Software\Classes\Applications\FlashDevelop.exe"
-	DeleteRegKey /ifempty HKCU "Software\Classes\Applications\FlashDevelop.exe"
+	DeleteRegKey /ifempty HKCR "Applications\HaxeDevelop.exe"	
+	DeleteRegKey /ifempty HKLM "Software\Classes\Applications\HaxeDevelop.exe"
+	DeleteRegKey /ifempty HKCU "Software\Classes\Applications\HaxeDevelop.exe"
 	
-	!insertmacro APP_ASSOCIATE "fdp" "FlashDevelop.Project" "FlashDevelop Project" "${WIN32RES},2" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fdproj" "FlashDevelop.GenericProject" "FlashDevelop Generic Project" "${WIN32RES},2" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "hxproj" "FlashDevelop.HaXeProject" "FlashDevelop Haxe Project" "${WIN32RES},2" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "as2proj" "FlashDevelop.AS2Project" "FlashDevelop AS2 Project" "${WIN32RES},2" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "as3proj" "FlashDevelop.AS3Project" "FlashDevelop AS3 Project" "${WIN32RES},2" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "docproj" "FlashDevelop.DocProject" "FlashDevelop Docs Project" "${WIN32RES},2" "" "${ASDOCGEN}"
-	!insertmacro APP_ASSOCIATE "lsproj" "FlashDevelop.LoomProject" "FlashDevelop Loom Project" "${WIN32RES},2" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdp" "HaxeDevelop.Project" "HaxeDevelop Project" "${WIN32RES},2" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdproj" "HaxeDevelop.GenericProject" "HaxeDevelop Generic Project" "${WIN32RES},2" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "hxproj" "HaxeDevelop.HaXeProject" "HaxeDevelop Haxe Project" "${WIN32RES},2" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "as2proj" "HaxeDevelop.AS2Project" "HaxeDevelop AS2 Project" "${WIN32RES},2" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "as3proj" "HaxeDevelop.AS3Project" "HaxeDevelop AS3 Project" "${WIN32RES},2" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "docproj" "HaxeDevelop.DocProject" "HaxeDevelop Docs Project" "${WIN32RES},2" "" "${ASDOCGEN}"
+	!insertmacro APP_ASSOCIATE "lsproj" "HaxeDevelop.LoomProject" "HaxeDevelop Loom Project" "${WIN32RES},2" "" "${EXECUTABLE}"
 
-	!insertmacro APP_ASSOCIATE "fdi" "FlashDevelop.Theme" "FlashDevelop Theme File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fdm" "FlashDevelop.Macros" "FlashDevelop Macros File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fdt" "FlashDevelop.Template" "FlashDevelop Template File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fda" "FlashDevelop.Arguments" "FlashDevelop Arguments File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fds" "FlashDevelop.Snippet" "FlashDevelop Snippet File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fdb" "FlashDevelop.Binary" "FlashDevelop Binary File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fdl" "FlashDevelop.Layout" "FlashDevelop Layout File" "${WIN32RES},1" "" "${EXECUTABLE}"
-	!insertmacro APP_ASSOCIATE "fdz" "FlashDevelop.Zip" "FlashDevelop Zip File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdi" "HaxeDevelop.Theme" "HaxeDevelop Theme File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdm" "HaxeDevelop.Macros" "HaxeDevelop Macros File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdt" "HaxeDevelop.Template" "HaxeDevelop Template File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fda" "HaxeDevelop.Arguments" "HaxeDevelop Arguments File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fds" "HaxeDevelop.Snippet" "HaxeDevelop Snippet File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdb" "HaxeDevelop.Binary" "HaxeDevelop Binary File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdl" "HaxeDevelop.Layout" "HaxeDevelop Layout File" "${WIN32RES},1" "" "${EXECUTABLE}"
+	!insertmacro APP_ASSOCIATE "fdz" "HaxeDevelop.Zip" "HaxeDevelop Zip File" "${WIN32RES},1" "" "${EXECUTABLE}"
 	
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Project" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.GenericProject" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.HaXeProject" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.AS2Project" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.AS3Project" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.DocProject" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.LoomProject" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Project" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.GenericProject" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.HaXeProject" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.AS2Project" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.AS3Project" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.DocProject" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.LoomProject" "ShellNew"
 
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Theme" "ShellNew"	
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Macros" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Template" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Arguments" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Snippet" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Binary" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Layout" "ShellNew"
-	!insertmacro APP_ASSOCIATE_REMOVEVERB "FlashDevelop.Zip" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Theme" "ShellNew"	
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Macros" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Template" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Arguments" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Snippet" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Binary" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Layout" "ShellNew"
+	!insertmacro APP_ASSOCIATE_REMOVEVERB "HaxeDevelop.Zip" "ShellNew"
 	
 	; Write uninstall section keys
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "InstallLocation" "$INSTDIR"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "Publisher" "FlashDevelop.org"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "DisplayVersion" "${VERSION}"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "DisplayName" "FlashDevelop"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "Comments" "Thank you for using FlashDevelop."
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "HelpLink" "http://www.flashdevelop.org/community/"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "UninstallString" "$INSTDIR\Uninstall.exe"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "DisplayIcon" "${EXECUTABLE}"
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "NoModify" 1
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop" "NoRepair" 1
-	WriteRegStr HKLM "Software\FlashDevelop" "CurrentVersion" ${VERSION}
-	WriteRegStr HKLM "Software\FlashDevelop" "" $INSTDIR
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "InstallLocation" "$INSTDIR"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "Publisher" "HaxeDevelop.org"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "DisplayVersion" "${VERSION}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "DisplayName" "HaxeDevelop"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "Comments" "Thank you for using HaxeDevelop."
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "HelpLink" "http://www.flashdevelop.org/community/"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "UninstallString" "$INSTDIR\Uninstall.exe"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "DisplayIcon" "${EXECUTABLE}"
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "NoModify" 1
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop" "NoRepair" 1
+	WriteRegStr HKLM "Software\HaxeDevelop" "CurrentVersion" ${VERSION}
+	WriteRegStr HKLM "Software\HaxeDevelop" "" $INSTDIR
 	WriteUninstaller "$INSTDIR\Uninstall.exe"
 	
 	!insertmacro UPDATEFILEASSOC
@@ -501,34 +501,34 @@ SectionGroupEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${Main} "Installs the main program and other required files."
 !insertmacro MUI_DESCRIPTION_TEXT ${RegistryMods} "Associates integral file types and adds the required uninstall configuration."
 !insertmacro MUI_DESCRIPTION_TEXT ${StandaloneMode} "Runs as standalone using only local setting files. NOTE: Not for standard users and manual upgrade only."
-!insertmacro MUI_DESCRIPTION_TEXT ${MultiInstanceMode} "Allows multiple instances of FlashDevelop to be executed. NOTE: There are some open issues with this."
+!insertmacro MUI_DESCRIPTION_TEXT ${MultiInstanceMode} "Allows multiple instances of HaxeDevelop to be executed. NOTE: There are some open issues with this."
 !insertmacro MUI_DESCRIPTION_TEXT ${NoChangesLocale} "Keeps the current language on update and defaults to English on clean install."
-!insertmacro MUI_DESCRIPTION_TEXT ${EnglishLocale} "Changes FlashDevelop's display language to English on next restart."
-!insertmacro MUI_DESCRIPTION_TEXT ${ChineseLocale} "Changes FlashDevelop's display language to Chinese on next restart."
-!insertmacro MUI_DESCRIPTION_TEXT ${JapaneseLocale} "Changes FlashDevelop's display language to Japanese on next restart."
-!insertmacro MUI_DESCRIPTION_TEXT ${GermanLocale} "Changes FlashDevelop's display language to German on next restart."
-!insertmacro MUI_DESCRIPTION_TEXT ${BasqueLocale} "Changes FlashDevelop's display language to Basque on next restart."
-!insertmacro MUI_DESCRIPTION_TEXT ${StartMenuGroup} "Creates a start menu group and adds default FlashDevelop links to the group."
-!insertmacro MUI_DESCRIPTION_TEXT ${QuickShortcut} "Installs a FlashDevelop shortcut to the Quick Launch bar."
-!insertmacro MUI_DESCRIPTION_TEXT ${DesktopShortcut} "Installs a FlashDevelop shortcut to the desktop."
+!insertmacro MUI_DESCRIPTION_TEXT ${EnglishLocale} "Changes HaxeDevelop's display language to English on next restart."
+!insertmacro MUI_DESCRIPTION_TEXT ${ChineseLocale} "Changes HaxeDevelop's display language to Chinese on next restart."
+!insertmacro MUI_DESCRIPTION_TEXT ${JapaneseLocale} "Changes HaxeDevelop's display language to Japanese on next restart."
+!insertmacro MUI_DESCRIPTION_TEXT ${GermanLocale} "Changes HaxeDevelop's display language to German on next restart."
+!insertmacro MUI_DESCRIPTION_TEXT ${BasqueLocale} "Changes HaxeDevelop's display language to Basque on next restart."
+!insertmacro MUI_DESCRIPTION_TEXT ${StartMenuGroup} "Creates a start menu group and adds default HaxeDevelop links to the group."
+!insertmacro MUI_DESCRIPTION_TEXT ${QuickShortcut} "Installs a HaxeDevelop shortcut to the Quick Launch bar."
+!insertmacro MUI_DESCRIPTION_TEXT ${DesktopShortcut} "Installs a HaxeDevelop shortcut to the desktop."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
 
 ; Uninstall Sections
 
-Section "un.FlashDevelop" UninstMain
+Section "un.HaxeDevelop" UninstMain
 	
 	SectionIn 1 2 RO
 	SetShellVarContext all
 	
-	Delete "$DESKTOP\FlashDevelop.lnk"
-	Delete "$QUICKLAUNCH\FlashDevelop.lnk"
-	Delete "$SMPROGRAMS\FlashDevelop\FlashDevelop.lnk"
-	Delete "$SMPROGRAMS\FlashDevelop\Documentation.url"
-	Delete "$SMPROGRAMS\FlashDevelop\Community.url"
-	Delete "$SMPROGRAMS\FlashDevelop\Uninstall.lnk"
-	RMDir "$SMPROGRAMS\FlashDevelop"
+	Delete "$DESKTOP\HaxeDevelop.lnk"
+	Delete "$QUICKLAUNCH\HaxeDevelop.lnk"
+	Delete "$SMPROGRAMS\HaxeDevelop\HaxeDevelop.lnk"
+	Delete "$SMPROGRAMS\HaxeDevelop\Documentation.url"
+	Delete "$SMPROGRAMS\HaxeDevelop\Community.url"
+	Delete "$SMPROGRAMS\HaxeDevelop\Uninstall.lnk"
+	RMDir "$SMPROGRAMS\HaxeDevelop"
 	
 	RMDir /r "$INSTDIR\Docs"
 	RMDir /r "$INSTDIR\Library"
@@ -547,8 +547,8 @@ Section "un.FlashDevelop" UninstMain
 	Delete "$INSTDIR\README.txt"
 	Delete "$INSTDIR\FirstRun.fdb"
 	Delete "$INSTDIR\Exceptions.log"
-	Delete "$INSTDIR\FlashDevelop.exe"
-	Delete "$INSTDIR\FlashDevelop.exe.config"
+	Delete "$INSTDIR\HaxeDevelop.exe"
+	Delete "$INSTDIR\HaxeDevelop.exe.config"
 	Delete "$INSTDIR\PluginCore.dll"
 	Delete "$INSTDIR\SciLexer.dll"
 	Delete "$INSTDIR\Scripting.dll"
@@ -559,29 +559,29 @@ Section "un.FlashDevelop" UninstMain
 	Delete "$INSTDIR\Uninstall.exe"
 	RMDir "$INSTDIR"
 	
-	!insertmacro APP_UNASSOCIATE "fdp" "FlashDevelop.Project"
-	!insertmacro APP_UNASSOCIATE "fdproj" "FlashDevelop.GenericProject"
-	!insertmacro APP_UNASSOCIATE "hxproj" "FlashDevelop.HaXeProject"
-	!insertmacro APP_UNASSOCIATE "as2proj" "FlashDevelop.AS2Project"
-	!insertmacro APP_UNASSOCIATE "as3proj" "FlashDevelop.AS3Project"
-	!insertmacro APP_UNASSOCIATE "docproj" "FlashDevelop.DocProject"
-	!insertmacro APP_UNASSOCIATE "lsproj" "FlashDevelop.LoomProject"
+	!insertmacro APP_UNASSOCIATE "fdp" "HaxeDevelop.Project"
+	!insertmacro APP_UNASSOCIATE "fdproj" "HaxeDevelop.GenericProject"
+	!insertmacro APP_UNASSOCIATE "hxproj" "HaxeDevelop.HaXeProject"
+	!insertmacro APP_UNASSOCIATE "as2proj" "HaxeDevelop.AS2Project"
+	!insertmacro APP_UNASSOCIATE "as3proj" "HaxeDevelop.AS3Project"
+	!insertmacro APP_UNASSOCIATE "docproj" "HaxeDevelop.DocProject"
+	!insertmacro APP_UNASSOCIATE "lsproj" "HaxeDevelop.LoomProject"
 	
-	!insertmacro APP_UNASSOCIATE "fdi" "FlashDevelop.Theme"
-	!insertmacro APP_UNASSOCIATE "fdm" "FlashDevelop.Macros"
-	!insertmacro APP_UNASSOCIATE "fdt" "FlashDevelop.Template"
-	!insertmacro APP_UNASSOCIATE "fda" "FlashDevelop.Arguments"
-	!insertmacro APP_UNASSOCIATE "fds" "FlashDevelop.Snippet"
-	!insertmacro APP_UNASSOCIATE "fdb" "FlashDevelop.Binary"
-	!insertmacro APP_UNASSOCIATE "fdl" "FlashDevelop.Layout"
-	!insertmacro APP_UNASSOCIATE "fdz" "FlashDevelop.Zip"
+	!insertmacro APP_UNASSOCIATE "fdi" "HaxeDevelop.Theme"
+	!insertmacro APP_UNASSOCIATE "fdm" "HaxeDevelop.Macros"
+	!insertmacro APP_UNASSOCIATE "fdt" "HaxeDevelop.Template"
+	!insertmacro APP_UNASSOCIATE "fda" "HaxeDevelop.Arguments"
+	!insertmacro APP_UNASSOCIATE "fds" "HaxeDevelop.Snippet"
+	!insertmacro APP_UNASSOCIATE "fdb" "HaxeDevelop.Binary"
+	!insertmacro APP_UNASSOCIATE "fdl" "HaxeDevelop.Layout"
+	!insertmacro APP_UNASSOCIATE "fdz" "HaxeDevelop.Zip"
 	
-	DeleteRegKey /ifempty HKLM "Software\FlashDevelop"
-	DeleteRegKey /ifempty HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlashDevelop"
+	DeleteRegKey /ifempty HKLM "Software\HaxeDevelop"
+	DeleteRegKey /ifempty HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HaxeDevelop"
 	
-	DeleteRegKey /ifempty HKCR "Applications\FlashDevelop.exe"	
-	DeleteRegKey /ifempty HKLM "Software\Classes\Applications\FlashDevelop.exe"
-	DeleteRegKey /ifempty HKCU "Software\Classes\Applications\FlashDevelop.exe"
+	DeleteRegKey /ifempty HKCR "Applications\HaxeDevelop.exe"	
+	DeleteRegKey /ifempty HKLM "Software\Classes\Applications\HaxeDevelop.exe"
+	DeleteRegKey /ifempty HKCU "Software\Classes\Applications\HaxeDevelop.exe"
 	
 	!insertmacro UPDATEFILEASSOC
 	
@@ -599,7 +599,7 @@ Section /o "un.Settings" UninstSettings
 	RMDir /r "$INSTDIR\Settings"
 	RMDir /r "$INSTDIR\Snippets"
 	RMDir /r "$INSTDIR\Templates"
-	RMDir /r "$LOCALAPPDATA\FlashDevelop"
+	RMDir /r "$LOCALAPPDATA\HaxeDevelop"
 	RMDir "$INSTDIR"
 	
 SectionEnd
@@ -620,20 +620,20 @@ SectionEnd
 Function .onInit
 	
 	; Check if the installer is already running
-	System::Call 'kernel32::CreateMutexA(i 0, i 0, t "FlashDevelop ${VERSION}") i .r1 ?e'
+	System::Call 'kernel32::CreateMutexA(i 0, i 0, t "HaxeDevelop ${VERSION}") i .r1 ?e'
 	Pop $0
 	StrCmp $0 0 +3
-	MessageBox MB_OK|MB_ICONSTOP "The FlashDevelop ${VERSION} installer is already running."
+	MessageBox MB_OK|MB_ICONSTOP "The HaxeDevelop ${VERSION} installer is already running."
 	Abort
 	
 	Call GetDotNETVersion
 	Pop $0
 	${If} $0 == "not_found"
-	MessageBox MB_OK|MB_ICONSTOP "You need to install Microsoft.NET 3.5 runtime before installing FlashDevelop."
+	MessageBox MB_OK|MB_ICONSTOP "You need to install Microsoft.NET 3.5 runtime before installing HaxeDevelop."
 	${Else}
 	${VersionCompare} $0 "3.5" $1
 	${If} $1 == 2
-	MessageBox MB_OK|MB_ICONSTOP "You need to install Microsoft.NET 3.5 runtime before installing FlashDevelop. You have $0."
+	MessageBox MB_OK|MB_ICONSTOP "You need to install Microsoft.NET 3.5 runtime before installing HaxeDevelop. You have $0."
 	${EndIf}
 	${EndIf}
 	
@@ -643,29 +643,29 @@ Function .onInit
 	Pop $2
 	${If} $2 == "do_reset"
 	${If} $0 != "not_found"
-	MessageBox MB_OK|MB_ICONEXCLAMATION "You have a version of FlashDevelop installed that may make FlashDevelop unstable or you may miss new features if updated. You should backup you custom setting files and do a full uninstall before installing this one. After install customize the new setting files."
+	MessageBox MB_OK|MB_ICONEXCLAMATION "You have a version of HaxeDevelop installed that may make HaxeDevelop unstable or you may miss new features if updated. You should backup you custom setting files and do a full uninstall before installing this one. After install customize the new setting files."
 	${EndIf}
 	${EndIf}
 	
 	Call GetFlashVersion
 	Pop $0
 	${If} $0 == "not_found"
-	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install Flash Player (ActiveX for IE) before installing FlashDevelop."
+	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install Flash Player (ActiveX for IE) before installing HaxeDevelop."
 	${Else}
 	${VersionCompare} $0 "9.0" $1
 	${If} $1 == 2
-	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install Flash Player (ActiveX for IE) before installing FlashDevelop. You have $0."
+	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install Flash Player (ActiveX for IE) before installing HaxeDevelop. You have $0."
 	${EndIf}
 	${EndIf}
 	
 	Call GetJavaVersion
 	Pop $0
 	${If} $0 == "not_found"
-	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install 32-bit Java Runtime (1.6 or later) before installing FlashDevelop."
+	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install 32-bit Java Runtime (1.6 or later) before installing HaxeDevelop."
 	${Else}
 	${VersionCompare} $0 "1.6" $1
 	${If} $1 == 2
-	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install 32-bit Java Runtime (1.6 or later) before installing FlashDevelop. You have $0."
+	MessageBox MB_OK|MB_ICONEXCLAMATION "You should install 32-bit Java Runtime (1.6 or later) before installing HaxeDevelop. You have $0."
 	${EndIf}
 	${EndIf}
 	

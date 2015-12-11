@@ -22,9 +22,9 @@ $(SystemDir) - Windows sistemaren direktorioa
 $(ProgramsDir) - Programa Fitxategien direktorioa
 $(PersonalDir) - Erabiltzailearen fitxategi pertsonalen direktorioa
 $(WorkingDir) - Uneko lan-direktorioa
-$(AppDir) - FlashDevelop-en programa direktorioa
-$(BaseDir) - FlashDevelop-en fitxategi direktorioa
-$(UserAppDir) - FlashDevelop-en erabiltzaile direktorioa
+$(AppDir) - HaxeDevelop-en programa direktorioa
+$(BaseDir) - HaxeDevelop-en fitxategi direktorioa
+$(UserAppDir) - HaxeDevelop-en erabiltzaile direktorioa
 - TYPE -------------------------------------------------------------------------
 $(TypPkg) - Fitxategi paketea
 $(TypName) - Uneko mota izena

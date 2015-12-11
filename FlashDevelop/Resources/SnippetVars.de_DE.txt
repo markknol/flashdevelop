@@ -22,9 +22,9 @@ $(SystemDir) - Windows System-Verzeichnis
 $(ProgramsDir) - Programm-Ordner
 $(PersonalDir) - "Eigene Dateien"-Ordner
 $(WorkingDir) - Aktuelles Arbeitsverzeichnis
-$(AppDir) - FlashDevelop Programm-Ordner
-$(BaseDir) - FlashDevelop Files-Ordner
-$(UserAppDir) - FlashDevelop Benutzer-Ordner
+$(AppDir) - HaxeDevelop Programm-Ordner
+$(BaseDir) - HaxeDevelop Files-Ordner
+$(UserAppDir) - HaxeDevelop Benutzer-Ordner
 - TYP -------------------------------------------------------------------------
 $(TypPkg) - Paket der aktuellen Datei
 $(TypName) - Name des aktuellen Typs

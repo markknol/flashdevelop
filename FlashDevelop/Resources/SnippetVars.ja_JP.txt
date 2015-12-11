@@ -22,9 +22,9 @@ $(SystemDir) - Windows システムディレクトリ
 $(ProgramsDir) - Program Files ディレクトリ
 $(PersonalDir) - マイドキュメントディレクトリ
 $(WorkingDir) - 現在の作業ディレクトリ
-$(AppDir) - FlashDevelop のインストールディレクトリ
-$(BaseDir) - FlashDevelop のファイルディレクトリ
-$(UserAppDir) - FlashDevelop のユーザーアプリケーションフォルダー
+$(AppDir) - HaxeDevelop のインストールディレクトリ
+$(BaseDir) - HaxeDevelop のファイルディレクトリ
+$(UserAppDir) - HaxeDevelop のユーザーアプリケーションフォルダー
 - タイプ -----------------------------------------------------------------------
 $(TypPkg) - クラスのパッケージ
 $(TypName) - クラス名

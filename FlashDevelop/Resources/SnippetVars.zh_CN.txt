@@ -22,9 +22,9 @@ $(SystemDir) - Windows 系统目录
 $(ProgramsDir) - Program Files目录
 $(PersonalDir) - 用户的文件目录
 $(WorkingDir) - 当前的工作目录
-$(AppDir) - FlashDevelop 程序目录
-$(BaseDir) - FlashDevelop 文件目录
-$(UserAppDir) - FlashDevelop 用户文件目录
+$(AppDir) - HaxeDevelop 程序目录
+$(BaseDir) - HaxeDevelop 文件目录
+$(UserAppDir) - HaxeDevelop 用户文件目录
 - 类型 -------------------------------------------------------------------------
 $(TypPkg) - 文件包
 $(TypName) - 当前类型名称

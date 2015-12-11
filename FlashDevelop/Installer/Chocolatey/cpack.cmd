@@ -1,2 +1,2 @@
 :: Package
-@call chocolatey pack flashdevelop-package\flashdevelop.nuspec
+@call chocolatey pack haxedevelop-package\haxedevelop.nuspec
